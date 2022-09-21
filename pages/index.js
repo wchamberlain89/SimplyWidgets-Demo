@@ -12,16 +12,23 @@ const Home = ({ widgets }) => {
   return (
     <div className="flex flex-center">
        {
-        widgets.map(widget => <Widget widget={widget}/>)
+        widgets.map((widget, index) => <Widget widget={widget} key={index} />)
        }
     </div>
   )
 }
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http:localhost:3001/widgets");
-  console.log(res)
-  const widgets = await res.json();
+export async function getServerSideProps() {
+  const widgets = [
+    {
+        "id" : 1,
+        "title": "Button 1"
+    },
+    {
+        "id" : 2,
+        "title": "Button 2"
+    }
+  ]
   return {
     props : {
       widgets
