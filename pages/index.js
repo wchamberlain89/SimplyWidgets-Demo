@@ -19,16 +19,8 @@ const Home = ({ widgets }) => {
 }
 
 export async function getServerSideProps() {
-  const widgets = [
-    {
-        "id" : 1,
-        "title": "Button 1"
-    },
-    {
-        "id" : 2,
-        "title": "Button 2"
-    }
-  ]
+  const res = await fetch("https://simple-json-widget-db.herokuapp.com/widgets")
+  const widgets = await res.json()
   return {
     props : {
       widgets
