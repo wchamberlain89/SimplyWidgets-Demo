@@ -25,16 +25,22 @@ export async function getStaticProps(context:any) {
 }
 
 export async function getStaticPaths() {
-    // We'll pre-render only these paths at build time.
-    // { fallback: blocking } will server-render pages
-    // on-demand if the path doesn't exist.
-    return {
-      paths: [{
-        params: {
-          widgetId: "1"
-        }
-      }],
-      fallback: 'blocking' }
+  // We'll pre-render only these paths at build time.
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return {
+    paths: [{
+      params: {
+        widgetId: "1"
+      }
+    }],
+    fallback: 'blocking' 
   }
+}
+
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 
 export default Widget
