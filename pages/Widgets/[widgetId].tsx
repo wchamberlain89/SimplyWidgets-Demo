@@ -1,11 +1,15 @@
+import { useState } from 'react';
+
 function Widget({ widget }: any) {
-  console.log(widget)
-    return <div className="flex flex-center">
-      {widget.title}
-        <button>-</button>
-        <div>0</div>
-        <button>+</button>
+  const [ count, setCount ] = useState(0);
+  return (
+    <div className="flex flex-center">
+        <h3>{widget.title}</h3>
+        <button onClick={() => {setCount(count - 1)}}>-</button>
+          <div>{ count }</div>
+        <button onClick={() => {setCount(count + 1)}}>+</button>
     </div>
+  )
 }
 
 export async function getStaticProps(context:any) {
